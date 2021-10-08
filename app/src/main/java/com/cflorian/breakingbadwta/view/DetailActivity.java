@@ -21,11 +21,7 @@ import java.util.Objects;
 
 public class DetailActivity extends AppCompatActivity {
 
-    private ToggleButton tbnFavDetail;
-    private TextView tvNombre, tvOccupation, tvStatus, tvPortrayed;
-    private ImageView ivImgDetail;
-    private String  sName, sStatus, sPortrayed, sImg, sOccupation = "", id, valueFav;;
-    private CharacterController characters;
+    private String  sName, sStatus, sPortrayed, sImg, sOccupation = "", id, valueFav;
     private ArrayList<ModelCharacter> list = new ArrayList<>();
 
     @Override
@@ -48,7 +44,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void getOccupation() {
-        characters = new CharacterController(this);
+        CharacterController characters = new CharacterController(this);
         list.clear();
         List<Map> mapOccupation = characters.getOccupation(Integer.parseInt(id));
         if (!mapOccupation.isEmpty()){
@@ -62,12 +58,12 @@ public class DetailActivity extends AppCompatActivity {
 
     private void initUI() {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        tbnFavDetail = findViewById(R.id.tbnFavDetail);
-        tvNombre = findViewById(R.id.tvNameDetail);
-        tvOccupation = findViewById(R.id.tvOccupation);
-        tvStatus = findViewById(R.id.tvStatus);
-        tvPortrayed = findViewById(R.id.tvPortrayed);
-        ivImgDetail = findViewById(R.id.ivImgDetail);
+        ToggleButton tbnFavDetail = findViewById(R.id.tbnFavDetail);
+        TextView tvNombre = findViewById(R.id.tvNameDetail);
+        TextView tvOccupation = findViewById(R.id.tvOccupation);
+        TextView tvStatus = findViewById(R.id.tvStatus);
+        TextView tvPortrayed = findViewById(R.id.tvPortrayed);
+        ImageView ivImgDetail = findViewById(R.id.ivImgDetail);
 
         if (valueFav.equals("1")){
             tbnFavDetail.setBackgroundResource(R.drawable.ic_android_heart_on);
@@ -102,5 +98,5 @@ public class DetailActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
     }
-    
+
 }
